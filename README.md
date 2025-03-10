@@ -44,8 +44,9 @@ Create a `.env` file in the root directory and add the following:
 GEMINI_API_KEY=your_gemini_api_key
 PINECONE_API_KEY=your_pinecone_api_key
 ```
+### 5. Run setup.py
 
-### 5. Run the Application
+### 6. Run the Application
 ```bash
 python app.py
 ```
