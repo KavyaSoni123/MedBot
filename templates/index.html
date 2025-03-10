@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>MedBot</title>
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") return;
+            
+            let chatBox = document.getElementById("chatBox");
+            
+            // Append user message
+            let userMessage = `<div class="item right"><div class="msg"><p>${userInput}</p></div></div>`;
+            chatBox.innerHTML += userMessage;
+            document.getElementById("userInput").value = "";
+            
+            // Send message to backend
+            fetch("/get", {
+                method: "POST",
+                body: new URLSearchParams({"msg": userInput}),
+                headers: {"Content-Type": "application/x-www-form-urlencoded"}
+            })
+            .then(response => response.text())
+            .then(data => {
+                let botMessage = `<div class="item"><div class="icon"><i class="fa fa-user"></i></div><div class="msg"><p>${data}</p></div></div>`;
+                chatBox.innerHTML += botMessage;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        // Add event listener for Enter key
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("userInput").addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Prevent form submission (if inside a form)
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">MedBot</div>
+        <div class="box" id="chatBox"></div>
+        <div class="typing-area">
+            <div class="input-field">
+                <input type="text" id="userInput" placeholder="Type your message" required>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

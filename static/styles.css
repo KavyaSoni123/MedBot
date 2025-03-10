@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #EBE8DB;
+}
+
+.wrapper {
+    width: 900px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.wrapper .title {
+    background: #B03052;
+    color: white;
+    line-height: 2.5;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding: 24px;
+}
+
+.wrapper .box {
+    border: none;
+    padding: 24px;
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.wrapper .box .item {
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+}
+
+.wrapper .box .item .icon {
+    background: #D76C82;
+    color: white;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.wrapper .box .item .msg {
+    background: #D76C82;
+    color: white;
+    border-radius: 14px;
+    padding: 16px 22px;
+    max-width: 100%;
+    font-size: 20px;
+    margin-left: 14px;
+}
+
+.wrapper .box .item.right {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.wrapper .box .item.right .msg {
+    background: #E9ECEF;
+    color: #333;
+    border-radius: 14px;
+    padding: 16px 22px;
+}
+
+.wrapper .typing-area {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border-top: 1px solid #ddd;
+}
+
+.wrapper .typing-area .input-field {
+    flex: 1;
+    position: relative;
+    display: flex;
+}
+
+.wrapper .typing-area .input-field input {
+    flex: 1;
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    outline: none;
+    font-size: 20px;
+    transition: border 0.3s;
+}
+
+.wrapper .typing-area .input-field input:focus {
+    border-color: #B03052;
+}
+
+.wrapper .typing-area .input-field button {
+    background: #B03052;
+    border: none;
+    padding: 16px 22px;
+    border-radius: 30px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 14px;
+    transition: background 0.3s;
+}
+
+.wrapper .typing-area .input-field button:hover {
+    background: #3D0301;
+}
